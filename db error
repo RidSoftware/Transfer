@@ -1,0 +1,18 @@
+
+? Error from /api/pull7days: Error: Unknown column 'HomeID' in 'where clause'
+    at PromisePoolConnection.execute (/home/c-main/Project/BigPlumTech/HomeSystemWebApp/src/node_modules/mysql2/lib/promise/connection.js:47:22)
+    at /home/c-main/Project/BigPlumTech/HomeSystemWebApp/src/routes/energyDataRoutes.js:140:50
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  code: 'ER_BAD_FIELD_ERROR',
+  errno: 1054,
+  sql: '\n' +
+    '            SELECT Date, SUM(EnergyVal) AS totalEnergy\n' +
+    '            FROM energydaily\n' +
+    '            WHERE HomeID = ?\n' +
+    '            AND Date BETWEEN ? AND ?\n' +
+    '            GROUP BY Date\n' +
+    '            ORDER BY Date DESC;\n' +
+    '        ',
+  sqlState: '42S22',
+  sqlMessage: "Unknown column 'HomeID' in 'where clause'"
+}
