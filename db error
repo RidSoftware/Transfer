@@ -16,3 +16,14 @@
   sqlState: '42S22',
   sqlMessage: "Unknown column 'HomeID' in 'where clause'"
 }
+///////////////
+
+new query
+
+SELECT energydaily.Date, SUM(energydaily.EnergyVal) AS totalEnergy
+            FROM energydaily
+            JOIN alldevices ON energydaily.DeviceID = alldevices.DeviceID
+            WHERE alldevices.HomeID = ?
+            AND energydaily.Date BETWEEN ? AND ?
+            GROUP BY energydaily.Date
+            ORDER BY energydaily.Date DESC;
